@@ -78,4 +78,14 @@ public class Distribuidores {
 			System.out.println(listaDistribuidores.get(i).formattedDistribuidor());
 		}
 	}
+	
+	/*public static int numeroDistribuidores() {
+	 
+		return listaDistribuidores.size();
+	}
+	
+	public static ArrayList <Distribuidor> getDistribuidores(){
+		
+		return listaDistribuidores;
+	}*/
 }

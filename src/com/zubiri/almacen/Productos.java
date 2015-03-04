@@ -1,24 +1,44 @@
 package com.zubiri.almacen;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Productos {
 	
 	private ArrayList<Producto> listaProductos = new ArrayList<Producto>();	
 	
-	public Productos(Scanner sc) {
+	public Productos(Scanner sc) throws Exception {
 
-		System.out.println("Cuantos productos quieres insertar? ");
-		int seleccion = sc.nextInt();
+	int seleccion = -1;
+	int seleccionPro = -1;
+		
+		do {
+		    try {
+		    	System.out.println("¿Cuantos productos quieres insertar? ");
+		    	seleccion = sc.nextInt();
+		    } catch (InputMismatchException e) {
+		        System.out.println("Debes introducir un número.\n");
+		        sc.nextLine();
+		    }
+		} while (seleccion < 0);
+		
 		for (int i = 0; i < seleccion; i++) {
-			
-			System.out.println("�Qu� producto quieres insertar?");
-			System.out.println("MANZANA:--------1");
-			System.out.println("LECHE:----------2");
-			System.out.println("LECHUGA:--------3");
+			do {
+				try {
+				System.out.println("¿Qué producto quieres insertar?");
+				System.out.println("MANZANA:--------1");
+				System.out.println("LECHE:----------2");
+				System.out.println("LECHUGA:--------3");
+				seleccionPro = sc.nextInt();
+				
+				} catch (InputMismatchException e) {
+					 System.out.println("Debes introducir un número.\n");
+					 sc.nextLine();
+				}
+			} while (seleccionPro != 1 && seleccionPro != 2 && seleccionPro != 3);
 		    
-			switch(sc.nextInt()) {
+			switch(seleccionPro) {
 				case 1:
 					Manzana manzana = new Manzana(sc);
 					listaProductos.add(manzana);
@@ -32,9 +52,9 @@ public class Productos {
 					listaProductos.add(lechuga);
 					break;
 				default:
-					System.out.println("No ha insertado la opci�n correcta.");
+					System.out.println("No ha insertado la opción correcta.");
 					break;
-			}			
+			}	
 		}
 	} 
 		 

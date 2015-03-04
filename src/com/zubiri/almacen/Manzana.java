@@ -11,8 +11,8 @@ import java.util.Scanner;
  */
 public class Manzana extends Producto  implements Enviable {
 
-	private String tipo;
-	private String color;
+	private String tipo = null;
+	private String color = null;
 	/**
 	 * 
 	 */
@@ -26,19 +26,35 @@ public class Manzana extends Producto  implements Enviable {
 	public Manzana(Scanner sc) {
 
 		super(sc);
-		System.out.println("Tipo de manzana (DELICIOUS-GOLDEN-RED):");
-		this.setTipo(sc.next());
+		do {
+			System.out.println("Tipo de manzana (DELICIOUS-GOLDEN-RED):");
+			try {
+				this.setTipo(sc.next());
+			} catch (Exception e) {
+				System.err.println(e);
+			}
+		} while (tipo == null);
 	    System.out.println("Color de la manzana:");
 	    this.setColor(sc.next());
-		
 	}
 
 	public String getTipo() {
 		return tipo;
 	}
 	
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipo(String tipo) throws Exception {
+		switch(tipo) {
+			case "DELICIOUS":
+			case "delicious":
+			case "GOLDEN":
+			case "golden":
+			case "RED":
+			case "red":
+				this.tipo = tipo;
+				break;
+			default:
+				throw new Exception("Tipo de manzana permitido: DELICIOUS-GOLDEN-RED");
+		}
 	}
 	
 	public String getColor() {

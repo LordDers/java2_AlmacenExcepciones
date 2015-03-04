@@ -31,7 +31,7 @@ public class Lechuga extends Producto implements Enviable {
 				this.setFresca(false);
 				break;
 			default:
-				System.out.println("No ha seleccionado la opci�n correcta");
+				System.out.println("No ha seleccionado la opción correcta");
 		}
 	}
 	

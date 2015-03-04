@@ -3,6 +3,7 @@
  */
 package com.zubiri.almacen;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -29,8 +30,15 @@ public abstract class Producto {
 		
 		System.out.println("Marca del producto:");
 		this.setMarca(sc.next());
-		System.out.println("Precio del producto:");
-		this.setMarca(sc.next());
+		do {
+			try {
+				System.out.println("Precio del producto:");
+				this.setPrecio(sc.nextDouble());
+			 } catch (InputMismatchException e) {
+				 System.out.println("Debes introducir un precio.\n");
+				 sc.nextLine();
+			 }
+		} while (precio == null);
 		System.out.println("Procedencia del producto:");
 		this.setProcedencia(sc.next());
 		System.out.println("Distribuidor del producto:");

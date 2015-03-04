@@ -36,7 +36,10 @@ public class Leche extends Producto  implements Enviable{
 			case "NO":
 				this.setLactosa(false);
 				break;
+			default:
+				System.out.println("No ha seleccionado la opción correcta");
 		}
+		
 		System.out.println("Es entera?(SI-NO):");
 		switch(sc.next()) {
 		case "SI":
@@ -45,6 +48,8 @@ public class Leche extends Producto  implements Enviable{
 		case "NO":
 			this.setEntera(false);
 			break;
+		default:
+			System.out.println("No ha seleccionado la opción correcta");
 		}
 	}
 
